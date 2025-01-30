@@ -19,13 +19,13 @@ type controller struct {
 type WorkoutRepository interface {
     Create(ctx context.Context, workout *Workout) error
     Update(ctx context.Context, workout *Workout) error
-    Delete(ctx context.Context, id int) error
-    List(ctx context.Context, userID int) ([]Workout, error)
+    Delete(ctx context.Context, id string) error
+    List(ctx context.Context, userID string) ([]Workout, error)
 }
 
 type AuthRepository interface {
     CreateUser(ctx context.Context, email, hashedPassword string) error
-    GetUser(ctx context.Context, email string) (string, error) // возвращает хешированный пароль
+    GetUser(ctx context.Context, email string) (string, error) 
 }
 
 func NewController(workoutRepo WorkoutRepository, authRepo AuthRepository) Controller {

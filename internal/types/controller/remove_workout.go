@@ -1,8 +1,8 @@
 package controller
 
 type RemoveWorkoutReq interface {
-    GetID() int        
-    GetUserID() int    
+    GetID() string        
+    GetUserID() string    
 }
 
 type RemoveWorkoutResp interface{}

@@ -1,7 +1,7 @@
 package controller
 
 type NewWorkoutReq interface {
-    GetUserID() int
+    GetUserID() string
     GetName() string
     GetExercises() []Exercise
 }

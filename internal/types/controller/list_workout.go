@@ -1,7 +1,7 @@
 package controller
 
 type ListWorkoutReq interface {
-    GetUserID() int    
+    GetUserID() string    
 }
 
 type ListWorkoutResp interface {

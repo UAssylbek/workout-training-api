@@ -1,35 +1,35 @@
 package controller
 
 type Workout struct {
-   ID        int    
-   UserID    int    
+   ID        string    
+   UserID    string    
    Name      string    
    Exercises []Exercise
 }
 
 type Exercise struct {
-   ID     int
+   ID     string
    Sets   int
    Reps   int
    Weight float64
 }
 
 type workoutReq struct {
-   userID    int
+   userID    string
    name      string
    exercises []Exercise
 }
 
 type alterWorkoutReq struct {
-   id        int
-   userID    int
+   id        string
+   userID    string
    name      *string
    exercises *[]Exercise
 }
 
 type removeWorkoutReq struct {
-   id     int
-   userID int
+   id     string
+   userID string
 }
 
 type signUpReq struct {
@@ -59,7 +59,7 @@ type signInResp struct {
    err   error
 }
 
-func (r *workoutReq) GetUserID() int {
+func (r *workoutReq) GetUserID() string {
    return r.userID
 }
 
@@ -71,11 +71,11 @@ func (r *workoutReq) GetExercises() []Exercise {
    return r.exercises
 }
 
-func (r *alterWorkoutReq) GetID() int {
+func (r *alterWorkoutReq) GetID() string {
    return r.id
 }
 
-func (r *alterWorkoutReq) GetUserID() int {
+func (r *alterWorkoutReq) GetUserID() string {
    return r.userID
 }
 
@@ -87,11 +87,11 @@ func (r *alterWorkoutReq) GetExercises() *[]Exercise {
    return r.exercises
 }
 
-func (r *removeWorkoutReq) GetID() int {
+func (r *removeWorkoutReq) GetID() string {
    return r.id
 }
 
-func (r *removeWorkoutReq) GetUserID() int {
+func (r *removeWorkoutReq) GetUserID() string {
    return r.userID
 }
 
@@ -132,7 +132,7 @@ func (r *signInResp) GetError() error {
 }
 
 
-func NewWorkoutRequest(userID int, name string, exercises []Exercise) *workoutReq {
+func NewWorkoutRequest(userID, name string, exercises []Exercise) *workoutReq {
    return &workoutReq{
        userID:    userID,
        name:      name,
@@ -140,7 +140,7 @@ func NewWorkoutRequest(userID int, name string, exercises []Exercise) *workoutRe
    }
 }
 
-func NewAlterWorkoutRequest(id, userID int, name *string, exercises *[]Exercise) *alterWorkoutReq {
+func NewAlterWorkoutRequest(id, userID string, name *string, exercises *[]Exercise) *alterWorkoutReq {
    return &alterWorkoutReq{
        id:        id,
        userID:    userID,
@@ -149,7 +149,7 @@ func NewAlterWorkoutRequest(id, userID int, name *string, exercises *[]Exercise)
    }
 }
 
-func NewRemoveWorkoutRequest(id, userID int) *removeWorkoutReq {
+func NewRemoveWorkoutRequest(id, userID string) *removeWorkoutReq {
    return &removeWorkoutReq{
        id:     id,
        userID: userID,
