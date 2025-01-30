@@ -11,11 +11,6 @@ type Controller interface {
     RemoveWorkout(context.Context, RemoveWorkoutReq) (RemoveWorkoutResp, error)
 }
 
-type controller struct {
-    workoutRepo WorkoutRepository    
-    authRepo    AuthRepository
-}
-
 type WorkoutRepository interface {
     Create(ctx context.Context, workout *Workout) error
     Update(ctx context.Context, workout *Workout) error
@@ -26,35 +21,4 @@ type WorkoutRepository interface {
 type AuthRepository interface {
     CreateUser(ctx context.Context, email, hashedPassword string) error
     GetUser(ctx context.Context, email string) (string, error) 
-}
-
-func NewController(workoutRepo WorkoutRepository, authRepo AuthRepository) Controller {
-    return &controller{
-        workoutRepo: workoutRepo,
-        authRepo:    authRepo,
-    }
-}
-
-func (c *controller) ListWorkout(ctx context.Context, req ListWorkoutReq) (ListWorkoutResp, error) {
-    return nil, nil
-}
-
-func (c *controller) NewWorkout(ctx context.Context, req NewWorkoutReq) (NewWorkoutResp, error) {
-    return nil, nil
-}
-
-func (c *controller) AlterWorkout(ctx context.Context, req AlterWorkoutReq) (AlterWorkoutResp, error) {
-    return nil, nil
-}
-
-func (c *controller) RemoveWorkout(ctx context.Context, req RemoveWorkoutReq) (RemoveWorkoutResp, error) {
-    return nil, nil
-}
-
-func (c *controller) SignUp(ctx context.Context, req SignUpReq) (SignUpResp, error) {
-    return nil, nil
-}
-
-func (c *controller) SignIn(ctx context.Context, req SignInReq) (SignInResp, error) {
-    return nil, nil
 }
